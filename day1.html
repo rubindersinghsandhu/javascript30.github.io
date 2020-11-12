@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/style1.css">
+<title>Day 1</title>
+</head>
+<body>
+<div class="keys">
+<div data-key="65" class="key">
+	<span>A</span>
+	
+</div>
+
+
+<div data-key="83" class="key">
+	<span>S</span>
+	
+</div>
+<div data-key="68" class="key">
+	<span>D</span>
+	
+</div>
+<div data-key="70" class="key">
+	<span>F</span>
+</div>
+<div data-key="71" class="key">
+	<span>G</span>
+	
+</div>
+<div data-key="72" class="key">
+	<span>H</span>
+	
+</div>
+<div data-key="74" class="key">
+	<span>J</span>
+	
+</div>
+<div data-key="75" class="key">
+	<span>K</span>
+	
+</div>
+<div data-key="76" class="key">
+	<span>L</span>
+	
+</div>
+
+</div>
+</div>
+<audio data-key="65" src="sounds/sound1.mp3"></audio>
+<audio data-key="83" src="sounds/sound2.mp3"></audio>
+<audio data-key="68" src="sounds/sound3.mp3"></audio>
+<audio data-key="70" src="sounds/sound4.mp3"></audio>
+<audio data-key="71" src="sounds/sound5.mp3"></audio>
+<audio data-key="72" src="sounds/sound6.mp3"></audio>
+<audio data-key="74" src="sounds/sound7.mp3"></audio>
+<audio data-key="75" src="sounds/sound8.mp3"></audio>
+<audio data-key="76" src="sounds/sound9.mp3"></audio>
+<script type="text/javascript">
+	function playSound(e){
+		const audio=document.querySelector(`audio[data-key="${e.keyCode}"]`);
+		const key=document.querySelector(`.key[data-key="${e.keyCode}"]`);
+		if(!audio) return;
+		audio.currentTime=0;
+		audio.play()
+		key.classList.add('playing');
+	}
+	
+	
+	function removeTransition(e){
+		if(e.propertyName !=='transform') return ;
+		
+		e.target.classList.remove('playing');
+		
+	}
+	const keys=Array.from(document.querySelectorAll(".key"));
+	keys.forEach(key => key.addEventListener('transitionend',removeTransition));
+	window.addEventListener('keydown',playSound);
+</script>
+</body>
+</html>
