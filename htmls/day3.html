@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" href="#" />
+	<i class="lni lni-direction"></i>
+	<link rel="stylesheet" type="text/css" href="../css/style3.css">
+	<title>Day 3</title>
+</head>
+<body>
+	<h2>Update CSS variable using <span class="h1">JS</span></h2>
+	<div class="changers">
+		<label for="spacing">Spacing:</label>
+		<input id="spacing" type="range" min="20" max="200" value="20" data-sizing="px">
+
+		<label for="blur">Blur:</label>
+		<input id="blur" type="range" min="0" max="25" value="0" data-sizing="px">
+
+		<label for="base">Color:</label>
+		<input id="base" type="color" value="#b6c41f">
+	</div>
+	<div class="image">
+		<input type="file" accept="image/jpeg, image/png, image/jpg" hidden>
+		<span for="imageTag" class="imageHeader">Click image to upload your own</span>
+		<img class="imageTag" src="../resource/day3-backgorund.jpg">
+	</div>
+	<script>
+		inputs = document.querySelectorAll(".changers input");
+		imgInput = document.querySelector(".image input");
+		imgAttribute = document.querySelector(".image img");
+		let imagesArray = []
+		function handleEvent(){
+			const suffix = this.dataset.sizing || '';
+			document.documentElement.style.setProperty(`--${this.id}`, this.value + suffix);
+		}
+
+		function displayImages(){
+			document.getElementsByClassName("imageTag")[0].src = `${URL.createObjectURL(imagesArray[0])}`;
+			imagesArray = [];
+		}
+
+		inputs.forEach(element => element.addEventListener('change', handleEvent));
+		inputs.forEach(element => element.addEventListener('mousemove', handleEvent));
+		imgAttribute.addEventListener('click', () => {
+			imgInput.click();
+		});
+		imgInput.addEventListener("change", ()=>{
+			const file = imgInput.files;
+  			imagesArray.push(file[0]);
+			displayImages();
+		})
+	</script>
+</body>
+</html>

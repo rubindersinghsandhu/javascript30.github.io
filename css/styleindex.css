@@ -1,36 +1,183 @@
-html{
-	background: url('../resource/indexback.jpg') bottom center;
-	
+body{
+  background-image: url("../resource/indexpage.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 }
-.days{
-	display: flex;
-	flex: 1;
-	min-height: 100vh;
-  align-items: center;
-  flex-flow: row wrap;
-  justify-content: center;}
-.day{
-	float: left;
-	color: red;
-	text-align: center;
-	font-size: 2em;
-	border: .4rem solid black;
-  border-radius: .5rem;
-  background: rgba(0,0,0,0);
-  text-shadow: 0 0 .5rem black;
-  margin: 9.2rem;
-  font-size: 1.5rem;
-  padding: 1rem;
-  width: 10rem;
-}
+
 .main{
 	font-size: 3em;
 	padding: 2rem;
-	margin:3% 0;
+	margin: 3% auto;
+	max-width: 70%;
 	text-align: center;
+	color:cyan;
 }
-.day a{
-	color: black;
-	margin: auto;
-  text-decoration: none;
+
+.wrapper {
+	height: 60%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin: 25% auto;
+  }
+
+  .carousel {
+	position: relative;
+	width: 100%;
+	max-width: 500px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+  }
+
+  .carousel__item {
+	display: flex;
+	align-items: center;
+	background-color: darkslategray;
+	position: absolute;
+	width: 100%;
+	padding: 0 12px;
+	opacity: 0;
+	filter: drop-shadow(0 2px 2px #555);
+	will-change: transform, opacity;
+	-webkit-animation: carousel-animate-vertical 27s linear infinite;
+			animation: carousel-animate-vertical 27s linear infinite;
+  }
+
+  .carousel__item:nth-child(1) {
+	-webkit-animation-delay: calc(3s * -1);
+			animation-delay: calc(3s * -1);
+  }
+  
+  .carousel__item:nth-child(2) {
+	-webkit-animation-delay: calc(3s * 0);
+			animation-delay: calc(3s * 0);
+  }
+  
+  .carousel__item:nth-child(3) {
+	-webkit-animation-delay: calc(3s * 1);
+			animation-delay: calc(3s * 1);
+  }
+  
+  .carousel__item:nth-child(4) {
+	-webkit-animation-delay: calc(3s * 2);
+			animation-delay: calc(3s * 2);
+  }
+  
+  .carousel__item:nth-child(5) {
+	-webkit-animation-delay: calc(3s * 3);
+			animation-delay: calc(3s * 3);
+  }
+  
+  .carousel__item:nth-child(6) {
+	-webkit-animation-delay: calc(3s * 4);
+			animation-delay: calc(3s * 4);
+  }
+  
+  .carousel__item:nth-child(7) {
+	-webkit-animation-delay: calc(3s * 5);
+			animation-delay: calc(3s * 5);
+  }
+  
+  .carousel__item:nth-child(8) {
+	-webkit-animation-delay: calc(3s * 6);
+			animation-delay: calc(3s * 6);
+  }
+  
+  .carousel__item:last-child {
+	-webkit-animation-delay: calc(-3s * 2);
+			animation-delay: calc(-3s * 2);
+  }
+
+  .carousel__item-body {
+	text-align: center;
+	width: 100%;
+	border-radius: 8px;
+	padding: 2% 10%;
+	color: antiquewhite;
+  }
+
+  .title {
+	text-transform: uppercase;
+	font-size: 20px;
+	margin-top: 10px;
+	text-decoration: none;
+	color:rgb(145, 221, 223);
+  }
+
+  @-webkit-keyframes carousel-animate-vertical {
+	0% {
+		transform: translateY(100%) scale(0.5);
+		opacity: 0;
+		visibility: hidden;
+	  }
+	  3%, 11.1111111111% {
+		transform: translateY(100%) scale(0.7);
+		opacity: 0.4;
+		visibility: visible;
+	  }
+	  14.1111111111%, 22.2222222222% {
+		transform: translateY(-100%) scale(1);
+		opacity: 1;
+		visibility: visible;
+	  }
+	  25.2222222222%, 33.3333333333% {
+		transform: translateY(-250%) scale(0.7);
+		opacity: 0.4;
+		visibility: visible;
+	  }
+	  36.3333333333% {
+		transform: translateY(-200%) scale(0.5);
+		opacity: 0;
+		visibility: visible;
+	  }
+	  100% {
+		transform: translateY(-200%) scale(0.5);
+		opacity: 0;
+		visibility: hidden;
+	  }
+  }
+  
+  @keyframes carousel-animate-vertical {
+	0% {
+	  transform: translateY(100%) scale(0.5);
+	  opacity: 0;
+	  visibility: hidden;
+	}
+	3%, 11.1111111111% {
+	  transform: translateY(100%) scale(0.7);
+	  opacity: 0.4;
+	  visibility: visible;
+	}
+	14.1111111111%, 22.2222222222% {
+	  transform: translateY(-100%) scale(1);
+	  opacity: 1;
+	  visibility: visible;
+	}
+	25.2222222222%, 33.3333333333% {
+	  transform: translateY(-250%) scale(0.7);
+	  opacity: 0.4;
+	  visibility: visible;
+	}
+	36.3333333333% {
+	  transform: translateY(-200%) scale(0.5);
+	  opacity: 0;
+	  visibility: visible;
+	}
+	100% {
+	  transform: translateY(-200%) scale(0.5);
+	  opacity: 0;
+	  visibility: hidden;
+	}
+  }
+
+.main a{
+	color:cyan;
 }
+
+.main a:hover{
+	color:coral;
+}
+
