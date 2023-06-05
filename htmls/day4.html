@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" href="#" />
+	<i class="lni lni-direction"></i>
+	<link rel="stylesheet" type="text/css" href="../css/style4.css">
+	<title>Day 3</title>
+</head>
+<body>
+	<h1>Array Cardio 1 </h1>
+	<div class="century-menu-label" for="century-menu">
+		Which <div class="century-menu"> Century 
+			<ul class="century-menu-lists century-menu--1-lists">
+			<li class="century-menu-items" value="1500">1500s</li>
+			<li class="century-menu-items" value="1600">1600s</li>
+			<li class="century-menu-items" value="1700">1700s</li>
+			<li class="century-menu-items" value="1800">1800s</li>
+			</ul>
+		</div> inventors you want to see?</div>
+
+	<div class="inventorBlock">
+	</div>
+	
+	
+	<script>
+		const inventors = [
+      { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
+      { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },
+      { first: 'Galileo', last: 'Galilei', year: 1564, passed: 1642 },
+      { first: 'Marie', last: 'Curie', year: 1867, passed: 1934 },
+      { first: 'Johannes', last: 'Kepler', year: 1571, passed: 1630 },
+      { first: 'Nicolaus', last: 'Copernicus', year: 1473, passed: 1543 },
+      { first: 'Max', last: 'Planck', year: 1858, passed: 1947 },
+      { first: 'Katherine', last: 'Blodgett', year: 1898, passed: 1979 },
+      { first: 'Ada', last: 'Lovelace', year: 1815, passed: 1852 },
+      { first: 'Sarah E.', last: 'Goode', year: 1855, passed: 1905 },
+      { first: 'Lise', last: 'Meitner', year: 1878, passed: 1968 },
+      { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
+    ];
+
+    const people = [
+      'Bernhard, Sandra', 'Bethea, Erin', 'Becker, Carl', 'Bentsen, Lloyd', 'Beckett, Samuel', 'Blake, William', 'Berger, Ric', 'Beddoes, Mick', 'Beethoven, Ludwig',
+      'Belloc, Hilaire', 'Begin, Menachem', 'Bellow, Saul', 'Benchley, Robert', 'Blair, Robert', 'Benenson, Peter', 'Benjamin, Walter', 'Berlin, Irving',
+      'Benn, Tony', 'Benson, Leana', 'Bent, Silas', 'Berle, Milton', 'Berry, Halle', 'Biko, Steve', 'Beck, Glenn', 'Bergman, Ingmar', 'Black, Elk', 'Berio, Luciano',
+      'Berne, Eric', 'Berra, Yogi', 'Berry, Wendell', 'Bevan, Aneurin', 'Ben-Gurion, David', 'Bevel, Ken', 'Biden, Joseph', 'Bennington, Chester', 'Bierce, Ambrose',
+      'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
+    ];
+    
+	function populateInventorBlock(inventor){
+		document.getElementsByClassName("inventorBlock")[0].innerHTML += '<div class="wrapper"><div class="card">\
+			<span class="enclosed">'+ `${inventor.first}` + '</span> ' +`${inventor.last}`+' \
+			<h3 class="year">Birth Year: '+ `${inventor.year}` + '</h3>\
+			<h3 class="year"> Passing Year: '+ `${inventor.passed}` + '</h3>\
+		</div></div>';
+	}
+
+	function populateInventorBlockForNoInventor(year){
+		document.getElementsByClassName("inventorBlock")[0].innerHTML += '<div class="wrapper"><div class="card">\
+			<span class="enclosed">No Inventor appeared in '+`${year}` +' </span> \
+		</div></div>';
+	}
+
+	window.addEventListener("load", event => { 
+		inventors.forEach(inventor => populateInventorBlock(inventor));
+	 })
+
+    // Array.prototype.filter()
+    // 1. Filter the list of inventors for those who were born in the 1500's
+	function showInventors(){
+		century = this.value
+		const validInventors = inventors.filter(inventor => (inventor.year > century && inventor.year < (century +100) )) ;
+		document.getElementsByClassName("inventorBlock")[0].innerHTML = "";
+		if(!validInventors.length){
+			populateInventorBlockForNoInventor(century)
+		}
+		validInventors.forEach(inventor => populateInventorBlock(inventor));
+	}
+	
+	centuryMenuItems = document.querySelectorAll(".century-menu-items");
+	centuryMenuItems.forEach(century => century.addEventListener("click", showInventors))
+
+    // Array.prototype.map()
+    // 2. Give us an array of the inventors first and last names
+
+    // Array.prototype.sort()
+    // 3. Sort the inventors by birthdate, oldest to youngest
+
+    // Array.prototype.reduce()
+    // 4. How many years did all the inventors live all together?
+
+    // 5. Sort the inventors by years lived
+
+    // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+    // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+
+
+    // 7. sort Exercise
+    // Sort the people alphabetically by last name
+
+    // 8. Reduce Exercise
+    // Sum up the instances of each of these
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+  			
+	</script>
+</body>
+</html>
